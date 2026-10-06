@@ -122,7 +122,7 @@ bool scsi_cmd_tx_data(SCSISession* scsi, uint8_t* data, uint32_t* len, uint32_t 
             data[6] = 0; // flags
             data[7] = 0; // flags
             memcpy(data + 8, "NotCBCSD", 8); // vendor id
-            memcpy(data + 16, "CBCSD Bypass    ", 16); // product id
+            memcpy(data + 16, "bypass          ", 16); // product id
             memcpy(data + 32, "0001", 4); // product revision level
             *len = 36;
             scsi->tx_done = true;
