@@ -1,0 +1,2 @@
+# cbcsdbypassflashdrive
+flipper zero require
