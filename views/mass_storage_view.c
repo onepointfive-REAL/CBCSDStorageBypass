@@ -46,7 +46,7 @@ static void mass_storage_draw_callback(Canvas* canvas, void* _model) {
 
     canvas_set_font(canvas, FontPrimary);
     canvas_draw_str_aligned(
-        canvas, canvas_width(canvas) / 2, 0, AlignCenter, AlignTop, "USB Mass Storage");
+        canvas, canvas_width(canvas) / 2, 0, AlignCenter, AlignTop, "CBCSD Storage Bypass");
 
     canvas_set_font(canvas, FontSecondary);
     elements_string_fit_width(canvas, model->file_name, 89 - 2);
