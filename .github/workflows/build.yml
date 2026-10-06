@@ -10,5 +10,13 @@ jobs:
 
       - name: Build with uFBT
         uses: flipperdevices/flipperzero-ufbt-action@v0.1.4
+        id: build-app
         with:
           app-dir: '.'
+
+      # ⬇️ ADD THIS STEP TO ACTUALLY SAVE THE FILE ⬇️
+      - name: Upload app artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Flipper-App
+          path: ${{ steps.build-app.outputs.fap-artifacts }}
