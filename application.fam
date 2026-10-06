@@ -1,6 +1,6 @@
 App(
-    appid="mass_storage",
-    name="Mass Storage CBCSD",
+    appid="cbcsd_storage_bypass",
+    name="CBCSD Storage Bypass",
     apptype=FlipperAppType.EXTERNAL,
     entry_point="mass_storage_app",
     requires=[
