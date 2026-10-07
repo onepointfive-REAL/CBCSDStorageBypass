@@ -15,6 +15,10 @@ static bool mass_storage_create_image(Storage* storage, const char* file_path, u
 
     bool success = false;
     uint8_t* buffer = malloc(WRITE_BUF_LEN);
+    if(!buffer) break;
+
+    memset(buffer, 0, WRITE_BUF_LEN);
+    
     do {
         if(!storage_file_open(file, file_path, FSAM_WRITE, FSOM_CREATE_ALWAYS)) break;
         if(!storage_file_seek(file, size, true)) break;
