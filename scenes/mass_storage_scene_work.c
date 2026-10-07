@@ -12,16 +12,24 @@ static bool file_read(
     uint8_t* out,
     uint32_t* out_len,
     uint32_t out_cap) {
+
     MassStorageApp* app = ctx;
-    FURI_LOG_T(TAG, "file_read lba=%08lX count=%04X out_cap=%08lX", lba, count, out_cap);
-    if(!storage_file_seek(app->file, lba * SCSI_BLOCK_SIZE, true)) {
+
+    if(!storage_file_seek(
+            app->file,
+            (uint64_t)lba * SCSI_BLOCK_SIZE,
+            true)) {
         FURI_LOG_W(TAG, "seek failed");
         return false;
     }
-    uint16_t clamp = MIN(out_cap, count * SCSI_BLOCK_SIZE);
+
+    uint32_t clamp =
+        MIN(out_cap, (uint32_t)count * SCSI_BLOCK_SIZE);
+
     *out_len = storage_file_read(app->file, out, clamp);
-    FURI_LOG_T(TAG, "%lu/%lu", *out_len, count * SCSI_BLOCK_SIZE);
+
     app->bytes_read += *out_len;
+
     return *out_len == clamp;
 }
 
